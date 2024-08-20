@@ -2,7 +2,13 @@ package screens;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidElement;
+import models.Auth;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.IRetryAnalyzer;
 
 public class AuthScreen extends BaseScreen {
     public AuthScreen(AppiumDriver<AndroidElement> driver) {
@@ -36,4 +42,26 @@ public class AuthScreen extends BaseScreen {
         return new ContactListScreen(driver);
     }
 
+    public AuthScreen fillLoginRegistrationForm(Auth auth){
+        shold(emailEditText,10);
+        type(emailEditText, auth.getEmail());
+        type(passwordEditText, auth.getPassword());
+        return this;
+
+    }
+
+    public AuthScreen submitLoginNegative() {
+        loginBtn.click();
+        return this;
+    }
+
+    public AuthScreen isErrorMessageContainsText(String text) {
+        Alert alert =new WebDriverWait(driver,10)
+                .until(ExpectedConditions.alertIsPresent());
+        driver.switchTo().alert();
+        Assert.assertTrue(alert.getText().contains(text));
+        alert.accept();
+
+        return this;
+    }
 }
