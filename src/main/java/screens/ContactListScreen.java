@@ -9,13 +9,13 @@ public class ContactListScreen extends BaseScreen{
         super(driver);
     }
 
-@FindBy(xpath = "")
+@FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/action_bar']/android.widget.TextView")
     AndroidElement activityTextView;
 
 
 
 
-    public boolean isContactListDisplayed(String text){
+    public boolean isActivityTitleDisplayed(String text){
 
         //return activityTextView.getText().contains("Contact List");
         return isShouldHave(activityTextView,text,8);

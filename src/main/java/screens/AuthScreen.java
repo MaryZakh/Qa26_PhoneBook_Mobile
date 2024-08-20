@@ -9,17 +9,19 @@ public class AuthScreen extends BaseScreen {
         super(driver);
     }
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/inputEmail']")
     AndroidElement emailEditText;
 
-    @FindBy(xpath = "")
+    @FindBy(id="com.sheygam.contactapp:id/inputPassword")
     AndroidElement passwordEditText;
 
-    @FindBy(xpath = "")
+    @FindBy(xpath = "//*[@text='LOGIN']")
     AndroidElement loginBtn;
 
 
     public AuthScreen fillEmail(String email) {
+        //pause(4000);
+        shold(emailEditText,10);
         type(emailEditText, email);
         return this;
     }
