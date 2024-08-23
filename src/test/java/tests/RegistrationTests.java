@@ -14,7 +14,8 @@ public class RegistrationTests extends AppiumConfig {
 
     @Test
     public void registrationSuccess(){
-        int i = new Random().nextInt(1000)+100;
+        int i = new Random().nextInt(1000)+1000;
+
         boolean result = new AuthScreen(driver)
                 .fillEmail("dex"+i+"@mail.com")
                 .fillPassword("Ww12345$")
@@ -25,8 +26,10 @@ public class RegistrationTests extends AppiumConfig {
     }
     @Test
     public void registrationSuccessModel(){
-        int i = new Random().nextInt(1000)+100;
+        int i = new Random().nextInt(1000)+1000;
+
         Auth auth = Auth.builder().email("dod"+i+"@mail.com").password("Dd12345$").build();
+
         boolean result = new AuthScreen(driver)
                 .fillLoginRegistrationForm(auth)
                 .submitRegistration()
@@ -38,6 +41,7 @@ public class RegistrationTests extends AppiumConfig {
     public void registrationWrongEmail(){
 
         Auth auth = Auth.builder().email("dodmail.com").password("Dod123456$").build();
+
         new AuthScreen(driver)
                 .fillLoginRegistrationForm(auth)
                 .submitRegistrationNegative()
@@ -49,6 +53,7 @@ public class RegistrationTests extends AppiumConfig {
     public void registrationWrongPassword(){
 
         Auth auth = Auth.builder().email("dod@mail.com").password("Dd1234").build();
+
         new AuthScreen(driver)
                 .fillLoginRegistrationForm(auth)
                 .submitRegistrationNegative()
@@ -59,6 +64,7 @@ public class RegistrationTests extends AppiumConfig {
     public void registrationExistsUser(){
 
         Auth auth = Auth.builder().email("mara@gmail.com").password("Mmar123456$").build();
+
         new AuthScreen(driver)
                 .fillLoginRegistrationForm(auth)
                 .submitRegistrationNegative()
