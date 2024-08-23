@@ -38,7 +38,7 @@ public void pause(int time){
     }
 }
 
-public void shold(AndroidElement element, int time){
+public void should(AndroidElement element, int time){
         new WebDriverWait(driver,time).until(ExpectedConditions.visibilityOf(element));
 }
 

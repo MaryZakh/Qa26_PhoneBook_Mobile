@@ -39,4 +39,8 @@ public class ContactListScreen extends BaseScreen {
         Assert.assertTrue(isActivityTitleDisplayed("Contact list"));
         return this;
     }
+
+    public boolean isContactListActivityDisplayed (){
+        return isShouldHave(activityTextView,"Contact list",15);
+    }
 }
